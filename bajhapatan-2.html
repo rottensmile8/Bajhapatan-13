@@ -39,6 +39,22 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; overflow: hidden; padding: 6rem 1.5rem 4rem;
   }
+  .hero-top {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+  .hero-bottom {
+  position: absolute;
+  top: 60%; /* adjust if needed */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  max-width: 860px;
+  text-align: center;
+}
   .hero-bg {
     position: absolute; inset: 0;
     background:
@@ -82,29 +98,91 @@
   @keyframes spinCCW { to { transform: rotate(-360deg); } }
 
   /* HERO CONTENT */
-  .hero-content { position: relative; z-index: 3; max-width: 860px; }
-  .org-badge {
-    display: inline-block;
-    border: 1px solid rgba(201,146,45,0.45);
-    color: var(--gold); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
-    padding: 0.4rem 1.4rem; border-radius: 100px; margin-bottom: 1.5rem;
-    background: rgba(201,146,45,0.07);
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3.2rem, 11vw, 7.5rem);
-    line-height: 0.92; color: var(--cream); letter-spacing: -0.02em;
-    animation: fadeUp 0.9s 0.1s ease both;
-    text-shadow: 0 2px 40px rgba(0,0,0,0.6);
-  }
-  .hero h1 em { font-style: italic; color: var(--saffron); display: block; }
-  .hero-divider { width: 80px; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 1.6rem auto; animation: fadeUp 0.9s 0.2s ease both; }
-  .hero-desc { font-size: clamp(0.9rem, 2.3vw, 1.1rem); font-weight: 300; color: rgba(253,246,227,0.72); line-height: 1.85; max-width: 560px; margin: 0 auto 2rem; animation: fadeUp 0.9s 0.3s ease both; }
-  .hero-scroll { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(253,246,227,0.38); animation: fadeUp 0.9s 0.5s ease both; margin-top: 0.75rem; }
-  .scroll-line { width: 36px; height: 1px; background: rgba(253,246,227,0.28); }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  /* HERO CONTENT */
+.hero-content { 
+  position: relative; 
+  z-index: 3; 
+  max-width: 860px; 
+  
+  /* Pushes the entire text block down from the center logo */
+  /* Adjust the '20vh' value to go further down or up */
+  /* margin-top: 2vh;  */
+}
 
+.org-badge {
+  display: inline-block;
+  border: 1px solid rgba(201,146,45,0.45);
+  color: var(--gold); 
+  font-size: 0.72rem; 
+  font-weight: 500; 
+  letter-spacing: 0.25em; 
+  text-transform: uppercase;
+  padding: 0.4rem 1.4rem; 
+  border-radius: 100px; 
+  margin-bottom: 1.5rem;
+  background: rgba(201,146,45,0.07);
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.2rem, 11vw, 7.5rem);
+  /* Keeping line-height tight but readable */
+  line-height: 0.05;  
+  color: rgba(rgb(255, 140, 0), green, blue, alpha); 
+  letter-spacing: -0.02em;
+  animation: fadeUp 0.9s 0.1s ease both;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+  /* Added margin-bottom to create space between title and description */
+  margin-bottom: 1rem; 
+}
+
+.hero h1 em { 
+  font-style: italic; 
+  color: var(--gold); 
+  display: block; 
+}
+
+.hero-divider { 
+  width: 80px; 
+  height: 2px; 
+  background: linear-gradient(to right, transparent, var(--gold), transparent); 
+  margin: 3rem auto; /* Spaced out the divider */
+  animation: fadeUp 0.9s 0.2s ease both; 
+}
+
+.hero-desc { 
+  font-size: clamp(0.9rem, 2.3vw, 1.1rem); 
+  font-weight: 300; 
+  color: rgba(253,246,227,0.72); 
+  line-height: 1.85; 
+  max-width: 560px; 
+  margin: 0 auto 10.5rem; /* Increased bottom margin */
+  animation: fadeUp 0.9s 0.3s ease both; 
+}
+
+.hero-scroll { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  font-size: 0.75rem; 
+  letter-spacing: 0.15em; 
+  text-transform: uppercase; 
+  color: rgba(253,246,227,0.38); 
+  animation: fadeUp 0.9s 0.5s ease both; 
+  margin-top: -10rem; 
+}
+
+.scroll-line { 
+  width: 36px; 
+  height: 10px; 
+  background: rgba(253,246,227,0.28); 
+}
+
+@keyframes fadeUp { 
+  from { opacity: 0; transform: translateY(22px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
   /* EVENTS SLIDER */
   .events-section {
     padding: 5rem 1.5rem;
@@ -175,9 +253,15 @@
   .gallery-header { text-align: center; margin-bottom: 3.5rem; }
   .gallery-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .gallery-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,146,45,0.12); }
-  .gallery-item:nth-child(1) { grid-column: 1 / 3; aspect-ratio: 16/9; }
-  .gallery-item:nth-child(5) { grid-column: 2 / 4; aspect-ratio: 16/9; }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  /* .gallery-item:nth-child(1) { grid-column: 1 / 3; aspect-ratio: 16/9; }
+  .gallery-item:nth-child(5) { grid-column: 2 / 4; aspect-ratio: 16/9; } */
+  .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* KEY FIX */
+  object-position: center;
+  display: block;
+}
   .gallery-item:hover img { transform: scale(1.06); }
   .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%); opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 1.2rem; }
   .gallery-item:hover .gallery-overlay { opacity: 1; }
@@ -191,6 +275,44 @@
   .ph-6 { background: linear-gradient(135deg, #0a2a1a, #1a6a3a, #0a3a20); }
   .ph-7 { background: linear-gradient(135deg, #2a0a0a, #7a1a1a, #4a0a0a); }
   .ph-icon { font-size: 2.2rem; opacity: 0.4; }
+
+  .gallery-slider {
+  display: flex;
+  height: 100%;
+  animation: slide 12s infinite;
+}
+
+.gallery-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+
+  /* AUTO RESPONSIVE GRID */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 1.25rem;
+}
+
+.gallery-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex: 0 0 100%;   /* each image takes full frame */
+}
+
+@keyframes slide {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(0); }
+
+  30%  { transform: translateX(-100%); }
+  55%  { transform: translateX(-100%); }
+
+  60%  { transform: translateX(-200%); }
+  85%  { transform: translateX(-200%); }
+
+  90%  { transform: translateX(-300%); }
+  100% { transform: translateX(-300%); }
+}
 
   /* PROGRAMS */
   .programs-inner { max-width: 1200px; margin: 0 auto; }
@@ -267,22 +389,22 @@
       <circle cx="250" cy="250" r="245" stroke="#C9922D" stroke-width="0.8"/>
       <circle cx="250" cy="250" r="232" stroke="#C9922D" stroke-width="0.4"/>
       <!-- 16 petals -->
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(0 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(22.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(45 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(67.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(90 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(112.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(135 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(157.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(180 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(202.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(225 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(247.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(270 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(292.5 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(315 250 250)"/>
-      <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(337.5 250 250)"/>
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(0 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(22.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(45 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(67.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(90 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(112.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(135 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(157.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(180 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(202.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(225 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(247.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(270 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(292.5 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(315 250 250)"/> -->
+      <!-- <ellipse cx="250" cy="120" rx="20" ry="128" stroke="#F0C060" stroke-width="0.6" fill="none" transform="rotate(337.5 250 250)"/> -->
       <!-- Shri Yantra: upward & downward triangles -->
       <polygon points="250,55 445,380 55,380" stroke="#E8670A" stroke-width="0.8" fill="none"/>
       <polygon points="250,445 55,120 445,120" stroke="#E8670A" stroke-width="0.8" fill="none"/>
@@ -347,29 +469,34 @@
       <line x1="395" y1="30" x2="105" y2="470" stroke="#C9922D" stroke-width="0.4"/>
       <line x1="30" y1="105" x2="470" y2="395" stroke="#C9922D" stroke-width="0.4"/>
       <line x1="470" y1="105" x2="30" y2="395" stroke="#C9922D" stroke-width="0.4"/>
-      <!-- 10-pointed inner star (Dashakonam) -->
+      10-pointed inner star (Dashakonam)
       <polygon points="250,100 276,183 362,183 295,234 320,318 250,268 180,318 205,234 138,183 224,183" stroke="#F0C060" stroke-width="0.7" fill="none"/>
     </svg>
 
     <!-- Logo blended in center -->
     <div class="logo-center">
-      <img src="/mnt/user-data/uploads/670163487_956713147168494_8301187218617545958_n.jpg" alt="Shree Satya Yuwa Sewa Samiti Logo">
+      <img src="images/logoB-13.jpg" alt="Shree Satya Yuwa Sewa Samiti Logo">
     </div>
   </div>
 
-  <div class="hero-content">
-    <span class="org-badge">Shree Satya Yuwa Sewa Samiti · Est. 2046 BS</span>
-    <h1>Baj<em>hapatan</em></h1>
-    <div class="hero-divider"></div>
-    <p class="hero-desc">
-      Serving our community with dedication, compassion, and unity. Rooted in the spirit of सेवा — selfless service for the upliftment of all people.
-    </p>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      Scroll to explore
-      <div class="scroll-line"></div>
-    </div>
+  <!-- TOP BADGE -->
+<div class="hero-top">
+  <span class="org-badge">Shree Satya Yuwa Sewa Samiti</span>
+</div>
+
+<!-- BOTTOM CONTENT -->
+<div class="hero-bottom">
+  <h1><em>Bajhapatan</em></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Serving our community with dedication, compassion, and unity. Rooted in the spirit of सेवा — selfless service for the upliftment of all people.
+  </p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to explore
+    <div class="scroll-line"></div>
   </div>
+</div>
 </section>
 
 <!-- UPCOMING EVENTS SLIDER -->
@@ -389,10 +516,24 @@
     <div class="events-track-wrap">
       <div class="events-track" id="evTrack">
 
+    <div class="event-card">
+      <img class="event-img" src="/images/Event2025/John.jpg" alt="13k Vertical Run 2026">
+    
+      <div class="event-body">
+        <span class="ev-tag annual">Annual</span>
+        <div class="event-title">Kalratri Music Fest</div>
+        <div class="event-meta">
+          <span>📅 Every Kalratri</span>
+          <span>📍 Bajhapatan School Ground</span>
+        </div>
+        <p class="event-desc">The Kalratri Music Fest is a vibrant cultural celebration held on the auspicious night of Maha Ashtami (Kalratri) during the Dashain festival.All contributions and proceeds from the festival are dedicated to the Local Development Committee to drive sustainable growth</p>
+      </div>
+    </div>
+
         <div class="event-card">
-          <img class="event-img" src="/mnt/user-data/uploads/670480602_954953484011127_7824505436192234952_n.jpg" alt="13k Vertical Run 2026">
+          <img class="event-img" src="/images/b13Run.jpg" alt="13k Vertical Run 2026">
           <div class="event-body">
-            <span class="ev-tag featured">Featured</span>
+            <span class="ev-tag featured">Upcoming</span>
             <div class="event-title">13k Vertical Run 2026</div>
             <div class="event-meta">
               <span>📅 Coming Soon</span>
@@ -403,8 +544,20 @@
         </div>
 
         <div class="event-card">
-          <div class="event-img-placeholder ph-2">
-            <span class="ph-icon">🩸</span>
+          <img class="event-img" src="/images/Plantation/1.jpg" alt="13k Vertical Run 2026">
+          <div class="event-body">
+            <span class="ev-tag featured">Featured</span>
+            <div class="event-title">Plantation Program</div>
+            <div class="event-meta">
+              <span>Featured</span>
+              <span>📍 Bajhapatan Basketball Court</span>
+            </div>
+            <p class="event-desc">A small plantation program at our home court with small cleaning campaign</p>
+          </div>
+        </div>
+
+          <!-- <div class="event-img-placeholder ph-2"> src="/images/Plantation/1.jpg"
+            <span src="/images/Plantation/1.jpg"</span>
             <span>Upload event photo</span>
           </div>
           <div class="event-body">
@@ -416,7 +569,7 @@
             </div>
             <p class="event-desc">Our annual camp where volunteers and locals come together to donate blood and save lives. Every drop counts — be a hero this season.</p>
           </div>
-        </div>
+        </div> -->
 
         <div class="event-card">
           <div class="event-img-placeholder ph-1">
@@ -428,27 +581,12 @@
             <div class="event-title">Van Mahotsav — Tree Plantation Drive</div>
             <div class="event-meta">
               <span>📅 TBA</span>
-              <span>📍 Ward 4, Bajhapatan</span>
+              <span>📍 Ward 13, Bajhapatan</span>
             </div>
             <p class="event-desc">Join us as we plant hundreds of saplings across the community to restore green cover and fight climate change at the local level.</p>
           </div>
         </div>
 
-        <div class="event-card">
-          <div class="event-img-placeholder ph-3">
-            <span class="ph-icon">🏥</span>
-            <span>Upload event photo</span>
-          </div>
-          <div class="event-body">
-            <span class="ev-tag annual">Annual</span>
-            <div class="event-title">Free Health Awareness Camp</div>
-            <div class="event-meta">
-              <span>📅 TBA</span>
-              <span>📍 Bajhapatan School Ground</span>
-            </div>
-            <p class="event-desc">Free medical check-ups, health screenings, and awareness sessions on hygiene and nutrition for all community members.</p>
-          </div>
-        </div>
 
         <div class="event-card">
           <div class="event-img-placeholder ph-4">
@@ -491,22 +629,81 @@
   </div>
 </section>
 
+
+
 <!-- GALLERY -->
-<section class="gallery-section" id="gallery">
-  <div class="gallery-header">
-    <span class="section-label">Our Work in Photos</span>
-    <h2 class="section-title">Moments of impact</h2>
+
+<div class="gallery-grid">
+<div class="gallery-item">
+  <div class="gallery-slider">
+    <img src="images/Event2025/John.jpg" >
+    <img src="images/Event2025/crowd.jpg" >
+    <img src="images/Event2025/sailu.jpg">
+    <img src="images/Event2025/dreamerz.jpg ">
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-item"><div class="photo-placeholder ph-1"><span class="ph-icon">🌿</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Community Tree Plantation Drive</span></div></div>
-    <div class="gallery-item"><div class="photo-placeholder ph-2"><span class="ph-icon">🩸</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Blood Donation Camp</span></div></div>
-    <div class="gallery-item"><div class="photo-placeholder ph-3"><span class="ph-icon">📚</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Free Education for Children</span></div></div>
-    <div class="gallery-item"><div class="photo-placeholder ph-4"><span class="ph-icon">🏥</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Health Awareness Camp</span></div></div>
-    <div class="gallery-item"><div class="photo-placeholder ph-5"><span class="ph-icon">🤝</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Relief Distribution Drive</span></div></div>
-    <div class="gallery-item"><div class="photo-placeholder ph-6"><span class="ph-icon">🧹</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Clean Bajhapatan Campaign</span></div></div>
-    <div class="gallery-item"><div class="photo-placeholder ph-7"><span class="ph-icon">🎉</span><span>Upload your photo</span></div><div class="gallery-overlay"><span class="gallery-caption">Cultural &amp; Social Events</span></div></div>
+  <img src="images/education.jpg" alt="Education Support">
+  <div class="gallery-overlay">
+    <span class="gallery-caption">Bajhapatan Music Fest 2025</span>
   </div>
-</section>
+</div>
+
+
+  <div class="gallery-item">
+    <div class="gallery-slider">
+      <img src="images/Cleaning.png" >
+      <img src="images/Cleaning2.png" >
+      <img src="images/Cleaning3.png" >
+      <img src="images/Cleaning4.png" >
+    </div>
+    <div class="gallery-overlay">
+      <span class="gallery-caption">Waste Management awareness</span>
+    </div>
+  </div>
+
+    <div class="gallery-item">
+      <div class="gallery-slider">
+        <img src="images/Plantation/1.jpg">
+        <img src="images/Plantation/2.jpg">
+        <img src="images/Plantation/3.jpg">
+        <img src="images/Plantation/4.jpg">
+        
+      </div>
+    
+      <div class="gallery-overlay">
+        <span class="gallery-caption">Community Tree Plantation Drive</span>
+      </div>
+    </div>
+
+  <div class="gallery-item">
+    <img src="images/Plantation/Police.jpg" alt="Health Camp">
+    <div class="gallery-overlay">
+      <span class="gallery-caption">Tracksuit Distribution to local Police</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/relief.jpg" alt="Relief Distribution">
+    <div class="gallery-overlay">
+      <span class="gallery-caption">Relief Distribution Drive</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/cleanup.jpg" alt="Clean Campaign">
+    <div class="gallery-overlay">
+      <span class="gallery-caption">Clean Bajhapatan Campaign</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/culture.jpg" alt="Cultural Events">
+    <div class="gallery-overlay">
+      <span class="gallery-caption">Cultural &amp; Social Events</span>
+    </div>
+  </div>
+
+</div>
+</body>
 
 <!-- PROGRAMS -->
 <section class="programs-section" id="programs" style="background: #0D1A0F;">
